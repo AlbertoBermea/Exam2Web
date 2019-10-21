@@ -5,15 +5,26 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
-const url_matricula = 'http://localhost:' + port + '/student/A01196516'
-const url_met = 'http://localhost:' + port + '/met?search=sunflowers'
+if ( process.env.NODE_ENV === 'production') {
+    const url_matricula = 'https://parcial2deweb.herokuapp.com/student/A01196516'
+    const url_met = 'https://parcial2deweb.herokuapp.com/met?search=sunflower'
+  } else {
+      
+    const url_matricula = 'http://localhost:' + port + '/student/A01196516'
+    const url_met = 'http://localhost:' + port + '/met?search=sunflowers'
+  }
+  
 
-app.get('/home', function(req, res) {
+
+app.get('/prueba_student', function(req, res) {
     res.redirect(url_matricula)
+})
+
+app.get('/prueba_met', function(req, res) {
     res.redirect(url_met)
 })
 
-app.get('/student/:id', function(req, res) {
+app.get('/students/:id', function(req, res) {
     var_id = req.params.id
     if( req.params.id == 'A01196516' ){
         res.send({ 
