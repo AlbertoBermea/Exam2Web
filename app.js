@@ -5,14 +5,17 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
-if ( process.env.NODE_ENV === 'production') {
-    const url_matricula = 'https://parcial2deweb.herokuapp.com/student/A01196516'
-    const url_met = 'https://parcial2deweb.herokuapp.com/met?search=sunflower'
-  } else {
-      
-    const url_matricula = 'http://localhost:' + port + '/student/A01196516'
-    const url_met = 'http://localhost:' + port + '/met?search=sunflowers'
-  }
+url_matricula = ""
+url_met = ""
+
+    if ( process.env.NODE_ENV === 'production') {
+        url_matricula = 'https://parcial2deweb.herokuapp.com/student/A01196516'
+        url_met = 'https://parcial2deweb.herokuapp.com/met?search=sunflower'
+    } 
+    else {  
+        url_matricula = 'http://localhost:' + port + '/student/A01196516'
+        url_met = 'http://localhost:' + port + '/met?search=sunflowers'
+    }
   
 
 
